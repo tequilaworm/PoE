@@ -1,0 +1,22 @@
+#pragma config["StandardModel, POE + CIM Testbed"]
+
+// all motor and sensor ports can be exchanged
+
+task main()
+{
+
+int facefo;
+int initbase;
+resetMotorEncoder(port1);
+setMotorEncoderUnits(encoderDegrees);
+initbase = getMotorEncoder(port1);
+
+
+	while(1==1)
+	{
+		motor[port1] = 25;
+		untilTouch(dgtl2);
+		
+	}
+	
+}
