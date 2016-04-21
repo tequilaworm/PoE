@@ -4,26 +4,27 @@
 
 void automove()
 {
+		initbase = getMotorEncoder(port2);
 		untilTouch(dgtl2); //bump switch, acts as button
 		motor[port2] = 25;
 		untilTouch(dgtl9); //limit switch set as the end of the infinite movement
-		facefo = getMotorEncoder(port1);
 		wait(0.5);
-		motor[port3] = 25;
-		setMotorTarget(port2, 1000, 15); //move arm forward to approx 45 deg or something
-		
-		
-		
+		setMotorTarget(port3, 1000, 15);
+		waitUntilMotorStop(port3);
 		wait(0.5);
 		setServo(port9, 44.5); //closes claw
 		wait(0.5);
-		setMotorTarget(port2, 0, 15);
-		
+		setMotorTarget(port3, 0, 15); //moves arm backwards
+		waitUntilMotorStop(port3);
+		setMotorTarget(port2, initbase, 25);
+		waitUntilMotorStop(port2);
+		setServo(port9, 0); //opens claw
+		//ugh this code is so ugly
 }
 
 void remote()
 {
-
+		if (SensorValue())
 }
 
 task main()
