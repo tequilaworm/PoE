@@ -2,15 +2,6 @@
 
 // all motor and sensor ports can be exchanged
 
-task main()
-{
-
-int facefo;
-int initbase;
-resetMotorEncoder(port1); //sets inital position of the arm
-resetMotorEncoder(port2); //sets initial position of forward motion
-initbase = getMotorEncoder(port1);
-
 void automove()
 {
 		untilTouch(dgtl2); //bump switch, acts as button
@@ -34,5 +25,14 @@ void remote()
 {
 
 }
-	
+
+task main()
+{
+
+int facefo;
+int initbase;
+resetMotorEncoder(port1); //sets inital position of the arm
+resetMotorEncoder(port2); //sets initial position of forward motion
+initbase = getMotorEncoder(port1);
+
 }
