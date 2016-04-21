@@ -7,16 +7,32 @@ task main()
 
 int facefo;
 int initbase;
-resetMotorEncoder(port1);
-setMotorEncoderUnits(encoderDegrees);
+resetMotorEncoder(port1); //sets inital position of the arm
+resetMotorEncoder(port2); //sets initial position of forward motion
 initbase = getMotorEncoder(port1);
 
-
-	while(1==1)
-	{
-		motor[port1] = 25;
-		untilTouch(dgtl2);
+void automove()
+{
+		untilTouch(dgtl2); //bump switch, acts as button
+		motor[port2] = 25;
+		untilTouch(dgtl9); //limit switch set as the end of the infinite movement
+		facefo = getMotorEncoder(port1);
+		wait(0.5);
+		motor[port3] = 25;
+		setMotorTarget(port2, 1000, 15); //move arm forward to approx 45 deg or something
 		
-	}
+		
+		
+		wait(0.5);
+		setServo(port9, 44.5); //closes claw
+		wait(0.5);
+		setMotorTarget(port2, 0, 15);
+		
+}
+
+void remote()
+{
+
+}
 	
 }
