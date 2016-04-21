@@ -1,4 +1,4 @@
-#pragma config["StandardModel, POE + CIM Testbed"]
+#pragma config(StandardModel, "POE + CIM Testbed")
 
 // all motor and sensor ports can be exchanged
 
